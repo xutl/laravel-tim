@@ -21,7 +21,7 @@ class TimServiceProvider extends ServiceProvider
     public function boot()
     {
         $source = realpath($raw = __DIR__ . '/../config/tim.php') ?: $raw;
-        if ($this->app->runningInConsole()) {
+        if ($this->app->runningInConsole() && $this->app->environment() !== 'production') {
             $this->publishes([
                 $source => config_path('tim.php'),
             ], 'tim-config');
