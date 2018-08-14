@@ -37,7 +37,6 @@ class UserObserver
     public function deleting($model)
     {
         $model->TIMUsing()->getAccount()->kick();
-        $model->TIMUsing()->getAccount()->kick();
     }
 
     /**
