@@ -34,8 +34,6 @@ class GroupObserver
             $req->setApplyJoinOption($model->getGroupApplyJoinOption());
         } catch (InvalidArgumentException $e) {
         }
-
-
         $res = $model->TIMUsing()->createGroup($req);
         if ($res->isSucceed()) {
             $this->updateAttributes(['chat_id' => $res->GroupId]);

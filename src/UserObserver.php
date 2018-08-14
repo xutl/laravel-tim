@@ -25,7 +25,7 @@ class UserObserver
      */
     public function created($model)
     {
-       $model->TIMUsing()->searchableUsing()->accountImport();
+       $model->TIMUsing()->accountImport($model->getKey());
     }
 
     /**
