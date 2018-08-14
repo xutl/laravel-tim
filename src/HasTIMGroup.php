@@ -8,6 +8,8 @@
 namespace XuTL\Tim;
 
 
+use XuTL\QCloud\Tim\Constants;
+
 /**
  * Trait HasTIMGroup
  *
@@ -22,5 +24,30 @@ trait HasTIMGroup
     public static function bootTIMable()
     {
         static::observe(new GroupObserver());
+    }
+
+    public function getGroupName()
+    {
+        return '';
+    }
+
+    /**
+     * 获取加群处理方式
+     *
+     * @return mixed
+     */
+    public function getGroupApplyJoinOption()
+    {
+        return Constants::GROUP_APPLY_JOIN_OPTION_FREE_ACCESS;
+    }
+
+    /**
+     * 获取群类型
+     *
+     * @return mixed
+     */
+    public function getGroupType()
+    {
+        return Constants::GROUP_TYPE_PUBLIC;
     }
 }

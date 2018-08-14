@@ -8,6 +8,8 @@
 namespace XuTL\Tim;
 
 use Illuminate\Database\Eloquent\Model;
+use XuTL\QCloud\Tim\Exception\InvalidArgumentException;
+use XuTL\QCloud\Tim\Requests\CreateGroupRequest;
 
 /**
  * 群组监听
@@ -24,7 +26,20 @@ class GroupObserver
      */
     public function created($model)
     {
+        $req = new CreateGroupRequest();
+        $req->setOwnerAccount($model->user_id);
+        $req->setName($model->getGroupName());
+        try {
+            $req->setType($model->getGroupType());
+            $req->setApplyJoinOption($model->getGroupApplyJoinOption());
+        } catch (InvalidArgumentException $e) {
+        }
 
+
+        $res = $model->TIMUsing()->createGroup($req);
+        if ($res->isSucceed()) {
+            $this->updateAttributes(['chat_id' => $res->GroupId]);
+        }
     }
 
     /**
