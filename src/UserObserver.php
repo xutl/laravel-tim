@@ -18,24 +18,35 @@ use Illuminate\Database\Eloquent\Model;
 class UserObserver
 {
     /**
-     * 监听创建事件.
+     * 监听用户创建事件.
      *
      * @param  Model $model
      * @return void
      */
     public function created($model)
     {
-        
+       $model->TIMUsing()->searchableUsing()->accountImport();
     }
 
     /**
-     * 监听删除事件.
+     * 监听用户删除事件.
      *
      * @param  Model $model
      * @return void
      */
     public function deleting($model)
     {
+        $model->TIMUsing()->getAccount()->kick();
+        $model->TIMUsing()->getAccount()->kick();
+    }
 
+    /**
+     * Get the TIM for the model.
+     *
+     * @return \XuTL\QCloud\Tim\Tim
+     */
+    public function TIMUsing()
+    {
+        return app(\XuTL\QCloud\Tim\Tim::class);
     }
 }

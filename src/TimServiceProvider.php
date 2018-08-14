@@ -7,13 +7,6 @@ use Illuminate\Support\ServiceProvider;
 class TimServiceProvider extends ServiceProvider
 {
     /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = true;
-
-    /**
      * Bootstrap services.
      *
      * @return void
@@ -35,16 +28,6 @@ class TimServiceProvider extends ServiceProvider
      * @return void
      */
     public function register()
-    {
-        $this->registerLaravelBindings();
-    }
-
-    /**
-     * Register Laravel bindings.
-     *
-     * @return void
-     */
-    protected function registerLaravelBindings()
     {
         $this->app->singleton(\XuTL\QCloud\Tim\Tim::class, function ($app) {
             return new \XuTL\QCloud\Tim\Tim(

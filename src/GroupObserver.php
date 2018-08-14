@@ -7,6 +7,7 @@
 
 namespace XuTL\Tim;
 
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * 群组监听
@@ -15,5 +16,35 @@ namespace XuTL\Tim;
  */
 class GroupObserver
 {
+    /**
+     * 监听创建事件.
+     *
+     * @param  Model $model
+     * @return void
+     */
+    public function created($model)
+    {
 
+    }
+
+    /**
+     * 监听删除事件.
+     *
+     * @param  Model $model
+     * @return void
+     */
+    public function deleting($model)
+    {
+
+    }
+
+    /**
+     * Get the TIM for the model.
+     *
+     * @return \XuTL\QCloud\Tim\Tim
+     */
+    public function TIMUsing()
+    {
+        return app(\XuTL\QCloud\Tim\Tim::class);
+    }
 }
