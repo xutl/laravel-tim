@@ -15,6 +15,6 @@ trait TIMable
      */
     public static function bootTIMable()
     {
-
+        static::observe(new UserObserver());
     }
 }
