@@ -3,11 +3,11 @@
 namespace XuTL\Tim;
 
 /**
- * Trait TIMable
+ * Trait HasTIM
  *
  * @author Tongle Xu <xutongle@gmail.com>
  */
-trait TIMable
+trait HasTIM
 {
     /**
      * Boot the trait.

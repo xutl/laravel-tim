@@ -9,11 +9,11 @@ namespace XuTL\Tim;
 
 
 /**
- * Trait TIMGroupable
+ * Trait HasTIMGroup
  *
  * @author Tongle Xu <xutongle@gmail.com>
  */
-trait TIMGroupable
+trait HasTIMGroup
 {
     /**
      * Boot the trait.
